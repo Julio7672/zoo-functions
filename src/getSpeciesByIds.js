@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 const getSpeciesByIds = (ids) => {
   // seu código aqui
-  data.species.forEach(element => {
+  data.species.forEach((element) => {
     if (element.id === ids) {
       return element.name;
     }
