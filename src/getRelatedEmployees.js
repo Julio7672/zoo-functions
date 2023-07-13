@@ -1,7 +1,7 @@
 const data = require('../data/zoo_data');
 
 const isManager = (id) => data.employees.filter((pessoa) => pessoa.id === id)
-    .some((employee) => employee.managers.length < 2);
+  .some((employee) => employee.managers.length < 2);
 
 // console.log(getRelatedEmployees('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
 const getRelatedEmployees = (managerId) => {
@@ -14,8 +14,8 @@ const getRelatedEmployees = (managerId) => {
   const employeesArr = [];
   data.employees.forEach((element) => {
     if (element.managers.some((id) => id === managerId)) {
-      employeesArr.push(`${element.firstName} ${element.lastName}`)
-    };
+      employeesArr.push(`${element.firstName} ${element.lastName}`);
+    }
   });
   return employeesArr;
 };
