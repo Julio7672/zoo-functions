@@ -11,7 +11,7 @@ const countAnimalss = (animal) => {
   const animalArray = [];
   if (Object.keys(animal).includes('species')) {
     data.species.forEach((element) => {
-      const animalNum = element.residents.length;     
+      const animalNum = element.residents.length;
       if (element.name === animal.species) {
         return animalArray.push(animalNum);
       }
