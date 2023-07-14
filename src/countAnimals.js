@@ -9,12 +9,12 @@ const countAnimalsvazio = () => {
 };
 const countAnimalss = (animal) => {
   const animalArray = [];
-  if(Object.keys(animal).includes('species')) {
+  if (Object.keys(animal).includes('species')) {
     data.species.forEach((element) => {
-    const animalNum = element.residents.length;      
+      const animalNum = element.residents.length;     
       if (element.name === animal.species) {
         return animalArray.push(animalNum);
-      }  
+      }
     });
   }
   return animalArray[0];
@@ -22,11 +22,11 @@ const countAnimalss = (animal) => {
 const countAnimalsSex = (animal) => {
   const animalArray = [];
   if (Object.keys(animal).includes('species' && 'sex')) {
-    data.species.forEach((element) => {      
+    data.species.forEach((element) => {
       if (element.name === animal.species) {
-        const animalNum = element.residents.filter((elemento) => elemento.sex === animal.sex).length;
+        const animalNum = element.residents.filter((elemen) => elemen.sex === animal.sex).length;
         return animalArray.push(animalNum);
-      } 
+      }
     });
   }
   return animalArray[0];
