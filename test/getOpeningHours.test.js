@@ -24,8 +24,8 @@ describe('Testes da função getOpeningHours', () => {
   });
   it('', () => {
     expect(() => {
-     getOpeningHours('sunday', '9:56-');
-   }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
+      getOpeningHours('sunday', '9:56-');
+    }).toThrow('The abbreviation must be \'AM\' or \'PM\'');
   });
   it('', () => {
     expect(() => {
