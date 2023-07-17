@@ -7,9 +7,7 @@ const getOldestFromFirstSpecies = (id) => {
   const arrayDeAnimaisId = (data.employees.find((element) => element.id === id).responsibleFor);
   const firstAnimal = arrayDeAnimaisId[0];
   const animal = data.species.find((elemento) => elemento.id === firstAnimal);
-  const residentsAge = animal.residents.filter((elementu) => elementu.age).map((ele) => {
-    return ele.age;
-  });
+  const residentsAge = animal.residents.filter((elementu) => elementu.age).map((ele) => ele.age);
   const ageOfOldestAnimal = residentsAge.sort((a, b) => b - a)[0];
   return Object.values(animal.residents
     .find((oldestAnimal) => oldestAnimal.age === ageOfOldestAnimal));
