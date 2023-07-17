@@ -1,13 +1,16 @@
 const data = require('../data/zoo_data');
 
 const getOldestFromFirstSpecies = (id) => {
-  const arrayDeAnimais = (data.employees.find((element) => element.id === id).responsibleFor);
-  const firstAnimal = arrayDeAnimais[0];
+  if (id === undefined) {
+    throw new Error('Um ID valido precisa ser passado');
+  }
+  const arrayDeAnimaisId = (data.employees.find((element) => element.id === id).responsibleFor);
+  const firstAnimal = arrayDeAnimaisId[0];
   const animal = data.species.find((elemento) => elemento.id === firstAnimal);
-  const residents = animal.residents.filter((elementu) => elementu.age).map((ele) => {
-     return ele.age;
+  const residentsAge = animal.residents.filter((elementu) => elementu.age).map((ele) => {
+    return ele.age;
   });
-  const ageOfOldestAnimal = residents.sort((a, b) => b - a)[0];
+  const ageOfOldestAnimal = residentsAge.sort((a, b) => b - a)[0];
   return Object.values(animal.residents
     .find((oldestAnimal) => oldestAnimal.age === ageOfOldestAnimal));
 };
