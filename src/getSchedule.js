@@ -11,8 +11,8 @@ const getScheduleDay = (scheduleTarget) => {
   }
   const array = [];
   const Obj = {};
-  const animaisDay = data.species.filter((element) => element.availability.includes(scheduleTarget));
-  animaisDay.forEach((element) => {
+  const animaDay = data.species.filter((element) => element.availability.includes(scheduleTarget));
+  animaDay.forEach((element) => {
     array.push(element.name);
   });
   const hourOpen = data.hours[scheduleTarget].open;
@@ -23,14 +23,13 @@ const getScheduleDay = (scheduleTarget) => {
   };
   return Obj;
 };
-
 const getScheduleNoParameter = (scheduleTarget) => {
   const obj = {};
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   weekDays.forEach((elemento) => {
     const array = [];
     const arrayAnimaisPerDay = data.species.filter((element) => element.availability
-    .includes(elemento)); // const array = arrayAnimaisPerDay.reduce((acc, cur) => [...acc, cur.name], [])
+      .includes(elemento)); // const array = arrayAnimaisPerDay.reduce((acc, cur) => [...acc, cur.name], [])
     arrayAnimaisPerDay.forEach((ele) => {
       array.push(ele.name);
     });
@@ -39,7 +38,7 @@ const getScheduleNoParameter = (scheduleTarget) => {
       exhibition: array,
     };
     if (elemento === 'Monday') {
-      obj['Monday'] = {
+      obj.Monday = {
         officeHour: 'CLOSED',
         exhibition: 'The zoo will be closed!',
       };
@@ -48,13 +47,13 @@ const getScheduleNoParameter = (scheduleTarget) => {
   return obj;
 };
 const getScheduleAnimal = (scheduleTarget) => data.species
-.find((element) => element.name === scheduleTarget).availability;
+  .find((element) => element.name === scheduleTarget).availability;
 const getSchedule = (scheduleTarget) => {
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const array = [];
   data.species.forEach((element) => array.push(element.name));
   if (!scheduleTarget || (weekDays.includes(scheduleTarget) === false && array
-  .includes(scheduleTarget) === false)) {
+    .includes(scheduleTarget) === false)) {
     return getScheduleNoParameter();
   }
   if (weekDays.some((element) => element === scheduleTarget)) {
