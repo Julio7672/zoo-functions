@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 const getScheduleDay = (scheduleTarget) => {
   if (scheduleTarget === 'Monday') {
     const obj0 = {};
-    obj0[scheduleTarget] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!', };
+    obj0[scheduleTarget] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
     return obj0;
   }
   const array = [];
@@ -12,9 +12,9 @@ const getScheduleDay = (scheduleTarget) => {
   animaDay.forEach((element) => {
     array.push(element.name);
   });
-  const hourOpen = data.hours[scheduleTarget].open;
-  const hourClose = data.hours[scheduleTarget].close;
-  Obj[scheduleTarget] = { officeHour: `Open from ${hourOpen}am until ${hourClose}pm`, exhibition: array, };
+  const O = data.hours[scheduleTarget].open;
+  const C = data.hours[scheduleTarget].close;
+  Obj[scheduleTarget] = { officeHour: `Open from ${O}am until ${C}pm`, exhibition: array };
   return Obj;
 };
 const getScheduleNoParameter = (scheduleTarget) => {
@@ -24,14 +24,14 @@ const getScheduleNoParameter = (scheduleTarget) => {
     const array = [];
     data.species.filter((element) => element.availability
       .includes(elemento)).forEach((ele) => {
-        array.push(ele.name);
-      }); // const array = arrayAnimaisPerDay.reduce((acc, cur) => [...acc, cur.name], [])
+      array.push(ele.name);
+    }); // const array = arrayAnimaisPerDay.reduce((acc, cur) => [...acc, cur.name], [])
     obj[elemento] = {
       officeHour: `Open from ${data.hours[elemento].open}am until ${data.hours[elemento].close}pm`,
       exhibition: array,
     };
     if (elemento === 'Monday') {
-      obj.Monday = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!', };
+      obj.Monday = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
     }
   });
   return obj;
