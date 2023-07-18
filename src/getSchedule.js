@@ -1,10 +1,4 @@
 const data = require('../data/zoo_data');
-const getScheduleAnimal = (scheduleTarget) => {
-  if(!scheduleTarget) {
-    return getScheduleNoParameter()
-  }
-  return data.species.find((element) => element.name === scheduleTarget).availability
-};
 const getScheduleDay = (scheduleTarget) => {
   if (scheduleTarget === 'Monday') {
     const obj0 = {}
@@ -29,7 +23,7 @@ const getScheduleDay = (scheduleTarget) => {
     return Obj
 };
 
-const getScheduleNoParameter = () => {
+const getScheduleNoParameter = (scheduleTarget) => {
   const obj = {}
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   weekDays.forEach((elemento)=>{
@@ -53,15 +47,22 @@ const getScheduleNoParameter = () => {
    })
   return obj
 };
+const getScheduleAnimal = (scheduleTarget) => {
+    return data.species.find((element) => element.name === scheduleTarget).availability
+};
 const getSchedule = (scheduleTarget) => {
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+ const array = []
+  data.species.forEach((element)=> array.push(element.name))
+  if (!scheduleTarget || (weekDays.includes(scheduleTarget) === false && array.includes(scheduleTarget) === false)) {
+    return getScheduleNoParameter()
+  }
   if (weekDays.some((element) => element === scheduleTarget)) {
     return getScheduleDay(scheduleTarget)
  }
   if (data.species.filter((element) => element.name === scheduleTarget)) {
     return getScheduleAnimal(scheduleTarget)
   }
-  return getScheduleNoParameter()
 };
 console.log(getSchedule())
 module.exports = getSchedule;
