@@ -5,16 +5,16 @@ const getAnimalMapNoParameter = () => {
   data.species.forEach((element) => {
     const array = [];
     data.species.filter((elemento) => element.location.includes(elemento.location))
-   .forEach((elementi) => {
-      array.push(elementi.name);
-    });
-    return obj[element.location] = array;
+      .forEach((elementi) => {
+        array.push(elementi.name);
+      });
+    obj[element.location] = array;
   });
   return obj;
 };
 const getAnimalMapSexSorted = (options) => {
   const obj0 = {};
-  data.species.forEach((ele) => obj0[ele.location] = []);
+  data.species.map((ele) => obj0[ele.location] = []);
   data.species.forEach((elemento) => {
     if (options.includeNames) {
       const arrayNames = elemento.residents
