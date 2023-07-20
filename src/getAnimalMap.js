@@ -14,7 +14,9 @@ const getAnimalMapNoParameter = () => {
 };
 const getAnimalMapSexSorted = (options) => {
   const obj0 = {};
-  data.species.map((ele) => obj0[ele.location] = []);
+  data.species.map((ele) => {
+    return obj0[ele.location] = [];
+  });
   data.species.forEach((elemento) => {
     if (options.includeNames) {
       const arrayNames = elemento.residents
