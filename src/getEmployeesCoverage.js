@@ -17,16 +17,15 @@ const getEmployeesCoverageAnimallocations = (ids) => {
 };
 
 const getEmployeesCoverageNoParameter = () => {
- const empregadosId = data.employees.map((ele) => ele.id)
- const empregadosfirstName = data.employees.map((ele) => ele.firstName)
- const empregadosLastName = data.employees.map((ele) => ele.lastName)
- data.employees.forEach((ele) => {
-  const obj = {};
-  data.employees.forEach((empregado) => {
-    obj.fullName = `${ele.firstName} ${ele.lastName}`
+  return data.employees.map((ele) => {
+    const obj = {
+    id: ele.id,
+    fullName:`${ele.firstName} ${ele.lastName}`,
+    species: getEmployeesCoverageAnimalNames(ele.responsibleFor),
+    locations: getEmployeesCoverageAnimallocations(ele.responsibleFor),
+  }
+  return obj
   })
-  return obj;
- })
 };
 
 const getEmployeesCoverage = (infos) => {
@@ -44,5 +43,5 @@ const getEmployeesCoverage = (infos) => {
   obj.locations = getEmployeesCoverageAnimallocations(empregado.responsibleFor)
   return obj
 };
-console.log(getEmployeesCoverage())
+console.log(getEmployeesCoverageNoParameter())
 module.exports = getEmployeesCoverage;
