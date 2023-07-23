@@ -17,14 +17,14 @@ const getEmployeesCoverageAnimallocations = (ids) => {
 };
 
 const getEmployeesCoverageNoParameter = () => data.employees.map((ele) => {
-    const obj = {
-      id: ele.id,
-      fullName: `${ele.firstName} ${ele.lastName}`,
-      species: getEmployeesCoverageAnimalNames(ele.responsibleFor),
-      locations: getEmployeesCoverageAnimallocations(ele.responsibleFor),
-    };
-    return obj;
-  });
+  const obj = {
+    id: ele.id,
+    fullName: `${ele.firstName} ${ele.lastName}`,
+    species: getEmployeesCoverageAnimalNames(ele.responsibleFor),
+    locations: getEmployeesCoverageAnimallocations(ele.responsibleFor),
+  };
+  return obj;
+});
 
 const getEmployeesCoverage = (infos) => {
   if (!infos) {
